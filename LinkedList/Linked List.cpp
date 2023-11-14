@@ -19,18 +19,20 @@ public:
 class LinkedList{
 public:
     Node* head;
-    int len = 0;
+    int len = 0; //whenever i add the node it increment with one.
     LinkedList() {
         head = nullptr;
     }
 
-    void pushHead(int data) {
+    void push(int data) {
         Node* newNode = new Node(data);
+        /*Check if head is null if yes assign the head to new node.*/
         if (head == nullptr) {
             head = newNode;
             len++;
             return;
         }
+        /*If head is not null than assing the head to newNode.(REMEMBER head in this linked list is actually tail.)*/
         newNode->next = head;
         head = newNode;
         len++;
@@ -43,6 +45,7 @@ public:
             len++;
             return;
         }
+        //Traversing to the end of the list and adding the node there.
         Node* tracer = head;
         while (tracer->next != nullptr) {
             tracer = tracer->next;
@@ -51,10 +54,10 @@ public:
     }
 
     void pushAt(int data,int pos) {
-        if (head == nullptr) {
+        if (head == nullptr) {  //If head is null it throws you should first add items using push mehtod.
             std::cout << "Add items in the list first [ addItem(data) ]\n";
         }
-        if (pos < len) {
+        if (pos < len) { //if pos is valid than do the insertion else throw a message.
 
 
             Node* newNode = new Node(data);
@@ -81,13 +84,15 @@ public:
     void deleteNode(int pos) {
         Node* tracer = head;
         Node* pre_tracer = nullptr;
+
         for (int i = 0; i < pos; i++) {
             pre_tracer = tracer;
             tracer = tracer->next;
-        }
+        }//tracer goes to the pos node and track the rev node than delete the tracer node.
         pre_tracer->next = tracer->next;
         delete tracer;
         tracer = nullptr;
+        len--;
 
     }
     void modifyNode(int data, int pos) {
@@ -111,11 +116,11 @@ public:
 int main()
 {
     LinkedList li;
-    li.pushHead(1);
-    li.pushHead(2);
-    li.pushHead(3);
-    li.pushHead(4);
-    li.pushHead(5);
+    li.push(1);
+    li.push(2);
+    li.push(3);
+    li.push(4);
+    li.push(5);
     li.printList();
     li.pushTail(0);
     li.printList();
