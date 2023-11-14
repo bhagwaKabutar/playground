@@ -1,3 +1,3 @@
 # playground
-Thiss library is used to learn git and version controlear
+This library is used to learn git and version control
 
