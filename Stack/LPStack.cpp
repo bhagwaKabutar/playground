@@ -1,6 +1,6 @@
 #include<iostream>
 #include<string>
-
+//This is the comment added.
 class Node{
 public:
     std::string data;
